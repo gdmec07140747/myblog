@@ -1,0 +1,6 @@
+#!/bin/bash
+
+docker build -t myblog . > dockerBuild.log
+cat dockerBuild.log
+ID=$(tail -1 dockerBuild.log | awk '{print $3;}')
+docker tag  $ID myblog:`date +%Y%m%d.%H%M`
